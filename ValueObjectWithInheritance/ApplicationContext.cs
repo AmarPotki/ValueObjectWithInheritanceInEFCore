@@ -11,7 +11,7 @@ namespace ValueObjectWithInheritance
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=192.168.10.144;Database=myDataBase;User Id=sa;Password=sa;");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=CourseDB;User Id=sa;Password=sa;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
