@@ -1,4 +1,4 @@
-﻿namespace ValueObjectWithInheritance;
+﻿namespace ValueObjectWithInheritance.Entities;
 
 public class Person
 {
@@ -8,8 +8,6 @@ public class Person
         FirstName = firstName;
         LastName = lastName;
     }
-
-    public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
 }

@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using ValueObjectWithInheritance.BuildingBlocks;
 
-namespace ValueObjectWithInheritance;
+namespace ValueObjectWithInheritance.Entities;
 
-public class PersonContainer
+public class PersonContainer : ValueObject
 {
     private PersonType _type;
     private string _firstName;
@@ -48,5 +49,12 @@ public class PersonContainer
                     break;
             }
         }
+    }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return _type;
+        yield return _firstName;
+        yield return _lastName;
     }
 }

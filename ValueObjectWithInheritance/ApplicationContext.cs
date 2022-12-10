@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ValueObjectWithInheritance.Configurations;
+using ValueObjectWithInheritance.Entities;
 
 namespace ValueObjectWithInheritance
 {
@@ -10,32 +11,12 @@ namespace ValueObjectWithInheritance
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"");
+            optionsBuilder.UseSqlServer(@"Server=192.168.10.144;Database=myDataBase;User Id=sa;Password=sa;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CourseClassTypeConfiguration());
         }
-    }
-
-
-    public class CourseClassTypeConfiguration : IEntityTypeConfiguration<Course>
-    {
-        public void Configure(EntityTypeBuilder<Course> builder)
-        {
-            builder.HasKey(p => p.Id);
-            builder.OwnsOne<PersonContainer>("_personContainer", navigationBuilder =>
-            {
-                navigationBuilder.Property<string>("_firstName").HasColumnName("FirstName").IsRequired();
-                navigationBuilder.Property<string>("_lastName").HasColumnName("LastName").IsRequired();
-                navigationBuilder.Property("_type").HasConversion<string>();
-                navigationBuilder.Property<string>("_subjectArea").HasColumnName("SubjectArea");
-                navigationBuilder.Property<string>("_department").HasColumnName("Department");
-
-
-            });
-        }
-
     }
 }

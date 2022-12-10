@@ -1,4 +1,4 @@
-﻿namespace ValueObjectWithInheritance;
+﻿namespace ValueObjectWithInheritance.Entities;
 
 public enum PersonType
 {
